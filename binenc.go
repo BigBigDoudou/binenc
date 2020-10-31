@@ -24,8 +24,8 @@ func (list List) Encode(elements []string) (int64, error) {
 				}
 				// add to res 1 left shifted by the index
 				// examples:
-				// 	 when i == 0: 1 << 0 -> 1   -> res += 1
-				// 	 when i == 2: 1 << 2 -> 100 -> res += 100
+				// 	 when i == 0: 1 << 0 -> 1   -> res += 1 (1 base2   -> 1 base10)
+				// 	 when i == 2: 1 << 2 -> 100 -> res += 4 (100 base2 -> 4 base10)
 				res += 1 << i
 				break
 			}
