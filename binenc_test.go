@@ -17,28 +17,15 @@ func TestDecode(t *testing.T) {
 	example := int64(42)
 	want := []string{"bravo", "delta", "foxtrot"}
 	decoded := list.Decode(example)
-	if !matchSlices(want, decoded) {
+	if !equalSlices(want, decoded) {
 		t.Fatalf(`Decoded(int64(42)) = %v, want %v`, decoded, want)
 	}
 }
 
 // Test if slices contains the same strings (not ordered)
-func matchSlices(sliceX []string, sliceY []string) bool {
-	if len(sliceX) != len(sliceY) {
-		return false
-	}
-
-	ok := false
-	for _, x := range sliceX {
-		for _, y := range sliceY {
-			// x found in y
-			if x == y {
-				ok = true
-				break
-			}
-		}
-		// x not found in y
-		if !ok {
+func equalSlices(s1 []string, s2 []string) bool {
+	for i, v := range s1 {
+		if v != s2[i] {
 			return false
 		}
 	}
