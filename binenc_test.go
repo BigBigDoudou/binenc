@@ -3,20 +3,20 @@ package binenc
 import "testing"
 
 func TestEncode(t *testing.T) {
-	list := List{"alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf"}
+	key := Key{"alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf"}
 	example := []string{"bravo", "delta", "foxtrot"}
 	want := int64(42)
-	encoded, err := list.Encode(example)
+	encoded, err := key.Encode(example)
 	if want != encoded || err != nil {
 		t.Fatalf(`Encode([]string{"bravo", "delta", "foxtrot"}) = %v, %v, want %v, nil`, encoded, err, want)
 	}
 }
 
 func TestDecode(t *testing.T) {
-	list := List{"alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf"}
+	key := Key{"alfa", "bravo", "charlie", "delta", "echo", "foxtrot", "golf"}
 	example := int64(42)
 	want := []string{"bravo", "delta", "foxtrot"}
-	decoded := list.Decode(example)
+	decoded := key.Decode(example)
 	if !equalSlices(want, decoded) {
 		t.Fatalf(`Decoded(int64(42)) = %v, want %v`, decoded, want)
 	}
