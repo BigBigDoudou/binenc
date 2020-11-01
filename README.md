@@ -20,7 +20,7 @@ func main() {
 	decoded := key.Decode(42)
 
 	fmt.Println(encoded)                       // 42     (base 10)
-	fmt.Println(strconv.FormatInt(encoded, 2)) // 101010 (base 2)
+	fmt.Println(strconv.FormatInt(encoded, 2)) // 0101010 (base 2)
 	fmt.Println(decoded)                       // [bravo delta foxtrot]
 }
 ```
