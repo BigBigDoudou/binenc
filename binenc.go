@@ -23,7 +23,7 @@ func (key Key) Encode(elements []string) (int64, error) {
 				}
 				// add to res 1 left shifted by the index
 				// examples:
-				// 	 when i == 0: 1 << 0 -> 1   -> res += 1 (1 base2   -> 1 base10)
+				// 	 when i == 0: 1 << 0 -> 001 -> res += 1 (1 base2   -> 1 base10)
 				// 	 when i == 2: 1 << 2 -> 100 -> res += 4 (100 base2 -> 4 base10)
 				res += 1 << i
 				break
@@ -43,8 +43,8 @@ func (key Key) Decode(code int64) []string {
 	// 	check if the code third number from the right is 1:
 	//  remove i numbers on the right then check if last numer is 1 (%2 == 1)
 	//  examples
-	// 		when code == 0101: 0101 >> 2 -> 01 -> add item
-	// 		when code == 1001: 1001 >> 2 -> 10 -> continue
+	// 		when code == 0101: 0101 >> 2 -> 0001 -> add item
+	// 		when code == 1001: 1001 >> 2 -> 0010 -> continue
 	for i, v := range key {
 		if ((code >> i) % 2) == 1 {
 			res = append(res, v)
